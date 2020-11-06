@@ -1,0 +1,35 @@
+# /etc/nginx/nginx.conf
+user nginx;
+worker_processes auto;
+#pid /run/nginx.pid;
+#include /etc/nginx/modules-enabled/*.conf;
+
+error_log /var/log/nginx/error.log warn;
+
+events {
+        worker_connections 1024;
+		# multi_accept on;
+
+}
+
+http {
+		server {
+			listen 					80;
+			location / {
+				return 301 			https://$host;
+			}
+		}
+
+		server {
+			listen 					443 ssl;
+			listen 					[::]:443 ssl;
+			error_page 497 https://$host:$server_port$request_uri;
+			server_name				_;
+
+			root 					/var/www/my_website;
+			index 					index.html index.htm;
+
+			ssl_certificate 		/etc/ssl/certs/nginx-selfsigned.crt;
+			ssl_certificate_key 	/etc/ssl/private/nginx-selfsigned.key;
+			}
+}
