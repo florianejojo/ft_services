@@ -39,7 +39,7 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - name: service-nginx
+      - name: nginx-service
         image: my-image-nginx
         imagePullPolicy: Never
         ports:

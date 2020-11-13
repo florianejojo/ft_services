@@ -32,7 +32,7 @@ kubectl apply -f srcs/metallb/metallb.yaml
 # Construction des containers
 ###
 docker build -t my-image-nginx srcs/nginx/
-kubectl apply -f srcs/nginx.yaml
+kubectl apply -f srcs/nginx/nginx.yaml
 
 #kubectl get svc | grep nginx-service | cut -d " " -f 15,16,17 | tr -d "\n" | tr -d " "
 
