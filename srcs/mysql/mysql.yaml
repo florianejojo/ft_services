@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  labels:
+    app: mysql
+spec:
+  selector:
+    app: mysql
+  ports:
+    - name: mysql-port
+      port: 3306
+      targetPort: 3306
+      protocol: TCP
+  type: ClusterIP
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  # labels:
+  #   app: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  replicas: 1
+  # strategy:
+  #   rollingUpdate:
+  #     maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: mysql-service
+          image: my-image-mysql
+          imagePullPolicy: Never
+          
+      #     volumeMounts:
+      #       - name: mysql-volume
+      #         mountPath: /var/lib/mysql
+      # volumes:
+      #   - name: mysql-volume
+      #     persistentVolumeClaim:
+      #       claimName: mysql-volume
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce  # read/write by one pod
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
+#storageClassName: slow
+# selector:
+#   matchLabels:
+#     release: "stable"
+#   matchExpressions:
+#     - {key: environment, operator: In, values: [dev]}
