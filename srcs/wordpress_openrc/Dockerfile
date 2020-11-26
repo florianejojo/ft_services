@@ -1,7 +1,5 @@
 FROM alpine
 
-RUN apk --no-cache add nginx supervisor curl
-
 RUN apk update && \
     apk upgrade && \
 	apk add php7 php7-fpm php7-opcache php7-gd php7-mysqli \
@@ -15,8 +13,6 @@ RUN tar xf wordpress.tar.gz && \
 
 COPY nginx.conf /etc/nginx/conf.d
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
 RUN mkdir -p /run/nginx && \
     rm /etc/nginx/conf.d/default.conf
 
@@ -26,4 +22,4 @@ RUN chmod +x entrypoint.sh
 
 EXPOSE 5050
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD "/entrypoint.sh"
