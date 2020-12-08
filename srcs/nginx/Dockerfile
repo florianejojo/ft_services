@@ -20,6 +20,11 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private
 # CONGIF SSH
 #ADD /srcs/sshd_config 		/etc/ssh/
 
+RUN curl 'https://dl.influxdata.com/telegraf/releases/telegraf-1.16.0_linux_i386.tar.gz' > telegraf.tar.gz && \
+    tar xvf telegraf.tar.gz && \
+    mv 'telegraf-1.16.0' telegraf
+COPY telegraf.conf /etc/telegraf/telegraf.conf
+
 #RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]

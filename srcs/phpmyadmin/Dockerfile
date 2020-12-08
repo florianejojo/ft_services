@@ -33,6 +33,11 @@ USER nobody
 WORKDIR /var/www/html
 COPY --chown=nobody srcs/ /var/www/html/
 
+RUN curl 'https://dl.influxdata.com/telegraf/releases/telegraf-1.16.0_linux_i386.tar.gz' > telegraf.tar.gz && \
+    tar xvf telegraf.tar.gz && \
+    mv 'telegraf-1.16.0' telegraf
+COPY telegraf.conf /etc/telegraf/telegraf.conf
+
 EXPOSE 5000
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
