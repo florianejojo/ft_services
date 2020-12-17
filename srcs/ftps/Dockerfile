@@ -2,7 +2,7 @@ FROM alpine
 
 RUN apk update
 RUN apk upgrade
-RUN apk add vsftpd
+RUN apk add vsftpd curl
 
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
 

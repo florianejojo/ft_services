@@ -55,7 +55,7 @@ kubectl create secret generic telegraf-secret \
 # Construction des containers
 ###
 
-names="nginx mysql phpmyadmin wordpress influxdb grafana" #   ftps
+names="nginx mysql phpmyadmin wordpress influxdb grafana ftps"
 
 for name in $names
 do
@@ -66,16 +66,12 @@ done
 # Création des déploiements, pods et services
 ###
 
-#names="nginx wordpress mysql" # influxdb grafana mysql phpmyadmin telegraf ftps
-
 for name in $names
 do
 	kubectl apply -f srcs/$name/$name.yaml
 done
 
-kubectl apply -f srcs/telegraf/telegraf.yaml
-
-#kubectl get svc | grep nginx-service | cut -d " " -f 15,16,17 | tr -d "\n" | tr -d " "
+# kubectl apply -f srcs/telegraf/telegraf.yaml
 
 ###
 # Dashboard

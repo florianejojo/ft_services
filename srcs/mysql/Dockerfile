@@ -26,7 +26,7 @@ FROM alpine:latest
 
 # Installation
 RUN apk update \
-&& apk add mariadb mariadb-client && apk add --no-cache --upgrade bash \
+&& apk add mariadb mariadb-client curl && apk add --no-cache --upgrade bash \
 && rm -rf /var/cache/apk/*
 
 # Copy initialisation script

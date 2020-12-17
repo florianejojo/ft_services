@@ -1,13 +1,9 @@
-# Nginx starting
-#set -x # Print commands and their arguments as they are executed
-#openrc
-#touch /run/openrc/softlevel
-rc-service nginx start
+#!/bin/sh
 
-# SSH starting
-#echo -e "$PASSWORD\n$PASSWORD" | adduser $USER
-#rc-update add sshd
-#rc-status
-#/etc/init.d/sshd start
+echo 'root:password' | chpasswd
+echo 'PermitRootLogin yes' >> /etc/ssh/sshd_confi
 
-#tail -f /dev/null # Freeze command to avoid end of container
+/telegraf/usr/bin/telegraf
+/etc/init.d/sshd start
+
+nginx -g 'daemon off;'

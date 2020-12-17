@@ -42,6 +42,14 @@ spec:
       - name: phpmyadmin-service
         image: my-image-phpmyadmin
         imagePullPolicy: Never
+        livenessProbe:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - ps aux | grep -v grep | grep php-fpm
+            initialDelaySeconds: 5
+            periodSeconds: 5
         ports:
         - containerPort: 5000
         # livenessProbe:
