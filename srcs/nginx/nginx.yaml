@@ -18,9 +18,6 @@ spec:
     port: 443
     targetPort: 443
     protocol: TCP
-  - name: ssh
-    port: 22
-    targetPort: 22
   type: LoadBalancer
 
 ---
@@ -44,20 +41,6 @@ spec:
       - name: nginx-service
         image: my-image-nginx
         imagePullPolicy: Never
-        # livenessProbe:
-        #     exec:
-        #       command:
-        #       - /bin/sh
-        #       - -c
-        #       - ps aux | grep -v grep | grep php-fpm
-        #     initialDelaySeconds: 5
-        #     periodSeconds: 5
-        livenessProbe:
-            tcpSocket:
-              port: 443
-            initialDelaySeconds: 5
-            periodSeconds: 5
         ports:
         - containerPort: 80
         - containerPort: 443
-        - containerPort: 22

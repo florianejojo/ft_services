@@ -29,6 +29,11 @@ RUN apk update \
 && apk add mariadb mariadb-client curl && apk add --no-cache --upgrade bash \
 && rm -rf /var/cache/apk/*
 
+#persistent volume
+# RUN mkdir -p /mnt/data
+RUN mkdir /data
+RUN chmod 777 /data
+
 # Copy initialisation script
 COPY ./init_docker.sh .
 COPY ./init_mysql.sh .
@@ -37,6 +42,8 @@ COPY wordpress.sql .
 # Add permission
 RUN chmod 777 init_docker.sh
 RUN chmod 777 init_mysql.sh
+
+#telegraf
 
 RUN curl 'https://dl.influxdata.com/telegraf/releases/telegraf-1.16.0_linux_i386.tar.gz' > telegraf.tar.gz && \
     tar xvf telegraf.tar.gz && \

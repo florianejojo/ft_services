@@ -24,6 +24,14 @@ kubectl apply -f srcs/metallb/metallb.yaml # voir si on peut le mettre à la fin
 
 
 ###
+# Persistent Volume
+## #
+# echo "minikube ssh"
+
+# echo "exit"
+
+
+###
 # Create secrets 
 ## #
 
@@ -40,16 +48,16 @@ kubectl apply -f srcs/metallb/metallb.yaml # voir si on peut le mettre à la fin
 #   --from-literal=GF_SECURITY_ADMIN_PASSWORD=admin1234
 
 #phpmyadmin
-kubectl create secret generic phpmyadmin-secret \
-  --from-literal=GF_SECURITY_ADMIN_USER=admin \
-  --from-literal=GF_SECURITY_ADMIN_PASSWORD=admin1234
+# kubectl create secret generic phpmyadmin-secret \
+#   --from-literal=GF_SECURITY_ADMIN_USER=admin \
+#   --from-literal=GF_SECURITY_ADMIN_PASSWORD=admin1234
 
-#telegraf
-kubectl create secret generic telegraf-secret \
-  --from-literal=INFLUXDB_DB=local_monitoring
-  --from-literal=INFLUXDB_URL=http://influxdb-service:8086
-  --from-literal=INFLUXDB_USER=root
-  --from-literal=INFLUXDB_USER_PASSWORD=root1234
+# #telegraf
+# kubectl create secret generic telegraf-secret \
+#   --from-literal=INFLUXDB_DB=local_monitoring
+#   --from-literal=INFLUXDB_URL=http://influxdb-service:8086
+#   --from-literal=INFLUXDB_USER=root
+#   --from-literal=INFLUXDB_USER_PASSWORD=root1234
 
 ###
 # Construction des containers

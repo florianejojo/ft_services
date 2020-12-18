@@ -1,4 +1,19 @@
 apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+  labels:
+    app: mysql
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
 kind: Service
 metadata:
   name: mysql-service
@@ -8,10 +23,10 @@ spec:
   selector:
     app: mysql
   ports:
-    - name: mysql-port
-      port: 3306
-      targetPort: 3306
-      protocol: TCP
+  - name: mysql-port
+    port: 3306
+    targetPort: 3306
+    protocol: TCP
   type: ClusterIP
 
 ---
@@ -25,9 +40,6 @@ spec:
     matchLabels:
       app: mysql
   replicas: 1
-  # strategy:
-  #   rollingUpdate:
-  #     maxSurge: 1
   template:
     metadata:
       labels:
@@ -35,34 +47,15 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-        - name: mysql-service
-          image: my-image-mysql
-          imagePullPolicy: Never
-          
-      #     volumeMounts:
-      #       - name: mysql-volume
-      #         mountPath: /var/lib/mysql
-      # volumes:
-      #   - name: mysql-volume
-      #     persistentVolumeClaim:
-      #       claimName: mysql-volume
-
----
-
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce  # read/write by one pod
-  volumeMode: Filesystem
-  resources:
-    requests:
-      storage: 1Gi
-#storageClassName: slow
-# selector:
-#   matchLabels:
-#     release: "stable"
-#   matchExpressions:
-#     - {key: environment, operator: In, values: [dev]}
+      - name: mysql-service
+        image: my-image-mysql
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+            - name: mysql-pvc
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-pvc
+          persistentVolumeClaim:
+            claimName: mysql-pvc

@@ -66,7 +66,9 @@ CREATE TABLE `wp_comments` (
 
 INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_id`) VALUES
 (1, 1, 'A WordPress Commenter', 'wapuu@wordpress.example', 'https://wordpress.org/', '', '2020-10-29 08:43:21', '2020-10-29 08:43:21', 'Hi, this is a comment.\nTo get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.\nCommenter avatars come from <a href=\"https://gravatar.com\">Gravatar</a>.', 0, '1', '', 'comment', 0, 0);
-
+(1, 'admin', '$P$BgBsVVoX8PRi1qWVR1tcheziWimvfJ.', 'admin', 'admin@admin.admin', 'http://192.168.99.232:5050', '2020-10-29 08:43:21', '', 0, 'admin'),
+(2, 'user1', '$P$B96QOrr17Nh01dEq27SToDdUV7W4uI/', 'user1', 'user1@user1.user1', 'http://user1.user1', '2020-10-29 08:58:21', '', 0, 'user1 user1'),
+(3, 'user2', '$P$BBRGmr36iVTuhwPJf0rA3/52v4hyrk/', 'user2', 'user2@user2.user2', 'http://user2.user2', '2020-10-29 08:58:50', '1603961930:$P$BaluwNMqsSFjJMkkHWLuQduvlkRWCl1', 0, 'user2 user2');
 -- --------------------------------------------------------
 
 --
@@ -470,7 +472,7 @@ CREATE TABLE `wp_users` (
 --
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-(1, 'admin', '$P$BgBsVVoX8PRi1qWVR1tcheziWimvfJ.', 'admin', 'admin@admin.admin', 'http://192.168.99.230:5050', '2020-10-29 08:43:21', '', 0, 'admin'),
+(1, 'admin', '$P$BgBsVVoX8PRi1qWVR1tcheziWimvfJ.', 'admin', 'admin@admin.admin', 'http://192.168.99.232:5050', '2020-10-29 08:43:21', '', 0, 'admin'),
 (2, 'user1', '$P$B96QOrr17Nh01dEq27SToDdUV7W4uI/', 'user1', 'user1@user1.user1', 'http://user1.user1', '2020-10-29 08:58:21', '', 0, 'user1 user1'),
 (3, 'user2', '$P$BBRGmr36iVTuhwPJf0rA3/52v4hyrk/', 'user2', 'user2@user2.user2', 'http://user2.user2', '2020-10-29 08:58:50', '1603961930:$P$BaluwNMqsSFjJMkkHWLuQduvlkRWCl1', 0, 'user2 user2');
 
