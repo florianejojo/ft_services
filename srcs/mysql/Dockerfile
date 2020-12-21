@@ -31,8 +31,8 @@ RUN apk update \
 
 #persistent volume
 # RUN mkdir -p /mnt/data
-RUN mkdir /data
-RUN chmod 777 /data
+# RUN mkdir /dat=  < wa
+# RUN chmod 777 /data
 
 # Copy initialisation script
 COPY ./init_docker.sh .

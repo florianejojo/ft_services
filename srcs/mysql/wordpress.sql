@@ -43,7 +43,7 @@ CREATE TABLE `wp_commentmeta` (
 --
 
 CREATE TABLE `wp_comments` (
-  `comment_ID` bigint(20) UNSIGNED NOT NULL,
+  `comment_ID` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `comment_post_ID` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `comment_author` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment_author_email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -60,15 +60,20 @@ CREATE TABLE `wp_comments` (
   `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- CREATE TABLE `nom_de__la_table` (
+--   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+--   [...]
+-- );
+
 --
 -- Dumping data for table `wp_comments`
 --
 
 INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_id`) VALUES
 (1, 1, 'A WordPress Commenter', 'wapuu@wordpress.example', 'https://wordpress.org/', '', '2020-10-29 08:43:21', '2020-10-29 08:43:21', 'Hi, this is a comment.\nTo get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.\nCommenter avatars come from <a href=\"https://gravatar.com\">Gravatar</a>.', 0, '1', '', 'comment', 0, 0);
-(1, 'admin', '$P$BgBsVVoX8PRi1qWVR1tcheziWimvfJ.', 'admin', 'admin@admin.admin', 'http://192.168.99.232:5050', '2020-10-29 08:43:21', '', 0, 'admin'),
-(2, 'user1', '$P$B96QOrr17Nh01dEq27SToDdUV7W4uI/', 'user1', 'user1@user1.user1', 'http://user1.user1', '2020-10-29 08:58:21', '', 0, 'user1 user1'),
-(3, 'user2', '$P$BBRGmr36iVTuhwPJf0rA3/52v4hyrk/', 'user2', 'user2@user2.user2', 'http://user2.user2', '2020-10-29 08:58:50', '1603961930:$P$BaluwNMqsSFjJMkkHWLuQduvlkRWCl1', 0, 'user2 user2');
+-- (1, 'admin', '$P$BgBsVVoX8PRi1qWVR1tcheziWimvfJ.', 'admin', 'admin@admin.admin', 'http://192.168.99.232:5050', '2020-10-29 08:43:21', '', 0, 'admin'),
+-- (2, 'user1', '$P$B96QOrr17Nh01dEq27SToDdUV7W4uI/', 'user1', 'user1@user1.user1', 'http://user1.user1', '2020-10-29 08:58:21', '', 0, 'user1 user1'),
+-- (3, 'user2', '$P$BBRGmr36iVTuhwPJf0rA3/52v4hyrk/', 'user2', 'user2@user2.user2', 'http://user2.user2', '2020-10-29 08:58:50', '1603961930:$P$BaluwNMqsSFjJMkkHWLuQduvlkRWCl1', 0, 'user2 user2');
 -- --------------------------------------------------------
 
 --
@@ -109,8 +114,8 @@ CREATE TABLE `wp_options` (
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'siteurl', 'http://192.168.99.232:5050', 'yes'),
-(2, 'home', 'http://192.168.99.232:5050', 'yes'),
+(1, 'siteurl', 'http://192.168.99.132:5050', 'yes'),
+(2, 'home', 'http://192.168.99.132:5050', 'yes'),
 (3, 'blogname', 'ft_services', 'yes'),
 (4, 'blogdescription', 'Just another WordPress site', 'yes'),
 (5, 'users_can_register', '0', 'yes'),
@@ -400,54 +405,58 @@ CREATE TABLE `wp_usermeta` (
 -- Dumping data for table `wp_usermeta`
 --
 
-INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES
-(1, 1, 'nickname', 'admin'),
-(2, 1, 'first_name', ''),
-(3, 1, 'last_name', ''),
-(4, 1, 'description', ''),
-(5, 1, 'rich_editing', 'true'),
-(6, 1, 'syntax_highlighting', 'true'),
-(7, 1, 'comment_shortcuts', 'false'),
-(8, 1, 'admin_color', 'fresh'),
-(9, 1, 'use_ssl', '0'),
-(10, 1, 'show_admin_bar_front', 'true'),
-(11, 1, 'locale', ''),
-(12, 1, 'wp_capabilities', 'a:1:{s:13:\"administrator\";b:1;}'),
-(13, 1, 'wp_user_level', '10'),
-(14, 1, 'dismissed_wp_pointers', ''),
-(15, 1, 'show_welcome_panel', '1'),
-(16, 1, 'session_tokens', 'a:1:{s:64:\"fa8b64d156f9b75179e5ea67730f107cc59c0d1bea7260aa5dd8523ac5afb01f\";a:4:{s:10:\"expiration\";i:1604133851;s:2:\"ip\";s:10:\"172.17.0.1\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36\";s:5:\"login\";i:1603961051;}}'),
-(17, 1, 'wp_dashboard_quick_press_last_post_id', '4'),
-(18, 1, 'community-events-location', 'a:1:{s:2:\"ip\";s:10:\"172.17.0.0\";}'),
-(19, 2, 'nickname', 'user1'),
-(20, 2, 'first_name', 'user1'),
-(21, 2, 'last_name', 'user1'),
-(22, 2, 'description', ''),
-(23, 2, 'rich_editing', 'true'),
-(24, 2, 'syntax_highlighting', 'true'),
-(25, 2, 'comment_shortcuts', 'false'),
-(26, 2, 'admin_color', 'fresh'),
-(27, 2, 'use_ssl', '0'),
-(28, 2, 'show_admin_bar_front', 'true'),
-(29, 2, 'locale', ''),
-(30, 2, 'wp_capabilities', 'a:1:{s:10:\"subscriber\";b:1;}'),
-(31, 2, 'wp_user_level', '0'),
-(32, 2, 'dismissed_wp_pointers', ''),
-(33, 3, 'nickname', 'user2'),
-(34, 3, 'first_name', 'user2'),
-(35, 3, 'last_name', 'user2'),
-(36, 3, 'description', ''),
-(37, 3, 'rich_editing', 'true'),
-(38, 3, 'syntax_highlighting', 'true'),
-(39, 3, 'comment_shortcuts', 'false'),
-(40, 3, 'admin_color', 'fresh'),
-(41, 3, 'use_ssl', '0'),
-(42, 3, 'show_admin_bar_front', 'true'),
-(43, 3, 'locale', ''),
-(44, 3, 'wp_capabilities', 'a:1:{s:6:\"author\";b:1;}'),
-(45, 3, 'wp_user_level', '2'),
-(46, 3, 'dismissed_wp_pointers', '');
+-- INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES
+-- (1, 1, 'nickname', 'admin'),
+-- (2, 1, 'first_name', ''),
+-- (3, 1, 'last_name', ''),
+-- (4, 1, 'description', ''),
+-- (5, 1, 'rich_editing', 'true'),
+-- (6, 1, 'syntax_highlighting', 'true'),
+-- (7, 1, 'comment_shortcuts', 'false'),
+-- (8, 1, 'admin_color', 'fresh'),
+-- (9, 1, 'use_ssl', '0'),
+-- (10, 1, 'show_admin_bar_front', 'true'),
+-- (11, 1, 'locale', ''),
+-- (12, 1, 'wp_capabilities', 'a:1:{s:13:\"administrator\";b:1;}'),
+-- (13, 1, 'wp_user_level', '10'),
+-- (14, 1, 'dismissed_wp_pointers', ''),
+-- (15, 1, 'show_welcome_panel', '1'),
+-- (16, 1, 'session_tokens', 'a:1:{s:64:\"fa8b64d156f9b75179e5ea67730f107cc59c0d1bea7260aa5dd8523ac5afb01f\";a:4:{s:10:\"expiration\";i:1604133851;s:2:\"ip\";s:10:\"172.17.0.1\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36\";s:5:\"login\";i:1603961051;}}'),
+-- (17, 1, 'wp_dashboard_quick_press_last_post_id', '4'),
+-- (18, 1, 'community-events-location', 'a:1:{s:2:\"ip\";s:10:\"172.17.0.0\";}'),
+-- (19, 2, 'nickname', 'user1'),
+-- (20, 2, 'first_name', 'user1'),
+-- (21, 2, 'last_name', 'user1'),
+-- (22, 2, 'description', ''),
+-- (23, 2, 'rich_editing', 'true'),
+-- (24, 2, 'syntax_highlighting', 'true'),
+-- (25, 2, 'comment_shortcuts', 'false'),
+-- (26, 2, 'admin_color', 'fresh'),
+-- (27, 2, 'use_ssl', '0'),
+-- (28, 2, 'show_admin_bar_front', 'true'),
+-- (29, 2, 'locale', ''),
+-- (30, 2, 'wp_capabilities', 'a:1:{s:10:\"subscriber\";b:1;}'),
+-- (31, 2, 'wp_user_level', '0'),
+-- (32, 2, 'dismissed_wp_pointers', ''),
+-- (33, 3, 'nickname', 'user2'),
+-- (34, 3, 'first_name', 'user2'),
+-- (35, 3, 'last_name', 'user2'),
+-- (36, 3, 'description', ''),
+-- (37, 3, 'rich_editing', 'true'),
+-- (38, 3, 'syntax_highlighting', 'true'),
+-- (39, 3, 'comment_shortcuts', 'false'),
+-- (40, 3, 'admin_color', 'fresh'),
+-- (41, 3, 'use_ssl', '0'),
+-- (42, 3, 'show_admin_bar_front', 'true'),
+-- (43, 3, 'locale', ''),
+-- (44, 3, 'wp_capabilities', 'a:1:{s:6:\"author\";b:1;}'),
+-- (45, 3, 'wp_user_level', '2'),
+-- (46, 3, 'dismissed_wp_pointers', '');
 
+
+INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES
+(NULL, '4', 'wp_capabilities', 'a:1:{s:13: »administrator »;s:1: »1″;}'),
+(NULL, '4', 'wp_user_level', '10');
 -- --------------------------------------------------------
 
 --
@@ -471,11 +480,15 @@ CREATE TABLE `wp_users` (
 -- Dumping data for table `wp_users`
 --
 
-INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-(1, 'admin', '$P$BgBsVVoX8PRi1qWVR1tcheziWimvfJ.', 'admin', 'admin@admin.admin', 'http://192.168.99.232:5050', '2020-10-29 08:43:21', '', 0, 'admin'),
-(2, 'user1', '$P$B96QOrr17Nh01dEq27SToDdUV7W4uI/', 'user1', 'user1@user1.user1', 'http://user1.user1', '2020-10-29 08:58:21', '', 0, 'user1 user1'),
-(3, 'user2', '$P$BBRGmr36iVTuhwPJf0rA3/52v4hyrk/', 'user2', 'user2@user2.user2', 'http://user2.user2', '2020-10-29 08:58:50', '1603961930:$P$BaluwNMqsSFjJMkkHWLuQduvlkRWCl1', 0, 'user2 user2');
+-- INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
+-- (1, 'admin', '$P$BgBsVVoX8PRi1qWVR1tcheziWimvfJ.', 'admin', 'admin@admin.admin', 'http://192.168.99.232:5050', '2020-10-29 08:43:21', '', 0, 'admin'),
+-- (2, 'user1', '$P$B96QOrr17Nh01dEq27SToDdUV7W4uI/', 'user1', 'user1@user1.user1', 'http://user1.user1', '2020-10-29 08:58:21', '', 0, 'user1 user1'),
+-- (3, 'user2', '$P$BBRGmr36iVTuhwPJf0rA3/52v4hyrk/', 'user2', 'user2@user2.user2', 'http://user2.user2', '2020-10-29 08:58:50', '1603961930:$P$BaluwNMqsSFjJMkkHWLuQduvlkRWCl1', 0, 'user2 user2');
 
+INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
+('1', 'wp_admin', MD5('admin'), 'flolefeb', 'flolefeb@student.42.fr', 'http://192.168.99.132:5050', '2020-12-01 00:00:00', '', '0', ''),
+('2', 'user2', 'user2', '', '', '', '2020-12-01 00:00:00', '', '0', ''),
+('3', 'user3', 'user3', '', '', '', '2020-12-02 00:00:00', '', '0', '');
 --
 -- Indexes for dumped tables
 --
@@ -593,8 +606,8 @@ ALTER TABLE `wp_commentmeta`
 --
 -- AUTO_INCREMENT for table `wp_comments`
 --
-ALTER TABLE `wp_comments`
-  MODIFY `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+-- ALTER TABLE `wp_comments`
+--   MODIFY `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
 
 --
 -- AUTO_INCREMENT for table `wp_links`

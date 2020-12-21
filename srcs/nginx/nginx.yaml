@@ -41,6 +41,14 @@ spec:
       - name: nginx-service
         image: my-image-nginx
         imagePullPolicy: Never
+        livenessProbe:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - ps aux | grep -v grep | grep php-fpm
+            initialDelaySeconds: 5
+            periodSeconds: 5
         ports:
         - containerPort: 80
         - containerPort: 443
