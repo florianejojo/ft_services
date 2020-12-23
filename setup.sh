@@ -63,7 +63,7 @@ kubectl apply -f srcs/metallb/metallb.yaml # voir si on peut le mettre à la fin
 # Construction des containers
 ###
 
-names="nginx mysql phpmyadmin wordpress influxdb grafana ftps"
+names="nginx  influxdb grafana"   #mysql phpmyadmin wordpress  ftps
 
 for name in $names
 do
