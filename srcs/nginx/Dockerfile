@@ -33,5 +33,7 @@ CMD ./setup.sh
 # CMD ["nginx", "-g", "daemon off;"]
 # ENTRYPOINT nginx -g "daemon off;" ; /telegraf/usr/bin/telegraf
 
+# ENTRYPOINT /telegraf/usr/bin/telegraf; nginx -g "daemon off;"
 
-
+# ENTRYPOINT ["/telegraf/usr/bin/telegraf"]
+# CMD ["nginx", "-g", "daemon off;"]
