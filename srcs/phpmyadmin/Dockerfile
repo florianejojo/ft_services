@@ -40,7 +40,7 @@ RUN curl 'https://dl.influxdata.com/telegraf/releases/telegraf-1.16.0_linux_i386
     mv 'telegraf-1.16.0' telegraf
 COPY telegraf.conf /etc/telegraf/telegraf.conf
 
-COPY launch.sh .
+# COPY launch.sh .
 
 EXPOSE 5000
 
