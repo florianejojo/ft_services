@@ -44,17 +44,8 @@ spec:
         ports:
         - containerPort: 80
         - containerPort: 443
-        # readinessProbe:
-        #   tcpSocket:
-        #     host: 192.168.99.132
-        #     port: 443
-        #     scheme: HTTPS
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 10
         livenessProbe:
           tcpSocket:
-            # host: 192.168.99.132
             port: 80
-            # scheme: HTTPS
           initialDelaySeconds: 5
           periodSeconds: 10

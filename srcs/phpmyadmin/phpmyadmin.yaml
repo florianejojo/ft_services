@@ -52,11 +52,3 @@ spec:
             periodSeconds: 5
         ports:
         - containerPort: 5000
-        # livenessProbe:
-        #   exec:
-        #     command:
-        #     - /bin/sh
-        #     - -c
-        #     - ps aux | grep -v grep | grep php-fpm
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 5

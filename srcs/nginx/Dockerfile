@@ -5,8 +5,7 @@ RUN apk update && apk add nginx curl openssl libressl supervisor
 #remplacer fichier config nginx
 COPY nginx.conf		/etc/nginx
 
-#page à afficher, indiquer le chemin dans nginx.conf
-#RUN mkdir my_website
+#page à afficher
 COPY index.html		var/www/
 
 #pour éviter d'utiliser openrc qui fait tourner nginx en background
@@ -22,15 +21,9 @@ RUN curl 'https://dl.influxdata.com/telegraf/releases/telegraf-1.16.0_linux_i386
 
 COPY telegraf.conf /etc/telegraf/telegraf.conf
 
-COPY setup.sh .
 COPY supervisord.conf .
-
-RUN chmod +x setup.sh
-
 
 EXPOSE 80
 EXPOSE 443
-
-# CMD ./setup.sh
 
 CMD ["supervisord", "-c", "supervisord.conf"]

@@ -14,25 +14,6 @@ spec:
       port: 21
       targetPort: 21
       protocol: TCP
-      
-    # - name: ftps-data0
-    #   targetPort: 21000
-    #   port: 21000
-    # - name: ftps-data1
-    #   targetPort: 21001
-    #   port: 21001
-    # - name: ftps-data2
-    #   targetPort: 21002
-    #   port: 21002
-    # - name: ftps-data3
-    #   targetPort: 21003
-    #   port: 21003
-    # - name: ftps-data4
-    #   targetPort: 21004
-    #   port: 21004
-    # - name: ftps-data5
-    #   targetPort: 21005
-    #   port: 21005
   type: LoadBalancer
 
 ---
@@ -56,5 +37,12 @@ spec:
         - name: ftps-service
           image: my-image-ftps
           imagePullPolicy: Never
+          livenessProbe:
+            exec:
+              command:
+              - sh
+              - check_liveness.sh
+            initialDelaySeconds: 5
+            periodSeconds: 5
           ports:
           - containerPort: 21
