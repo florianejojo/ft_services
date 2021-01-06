@@ -1,13 +1,12 @@
-#! /bin/bash
+#!/bin/bash
 
-# Wait that mysql was up
+# Wait for mysql to be working
 until mysql
 do
 	echo "NO_UP"
 done
 
 # Init DB
-
 echo "CREATE DATABASE wordpress;" | mysql -u root --skip-password
 echo "CREATE USER 'wp_admin'@'%' IDENTIFIED BY 'admin';" | mysql -u root --skip-password
 echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'wp_admin'@'%' WITH GRANT OPTION;" | mysql -u root --skip-password
