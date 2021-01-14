@@ -1,0 +1,12 @@
+download_enable=YES
+  anon_world_readable_only=NO
+  write_enable=YES
+  anon_upload_enable=YES
+  anon_mkdir_write_enable=YES
+  anon_other_write_enable=YES
+  chmod_enable=YES
+  virtual_use_local_privs=YES
+  force_dot_files=NO
+  hide_ids=YES
+  local_root=/var/www/html
+  guest_username=ftpuser
