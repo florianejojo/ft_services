@@ -85,6 +85,9 @@ RUN echo -e "admin\nadmin" | passwd admin
 # RUN  tar xvf telegraf.tar.gz && \
 #      mv 'telegraf-1.16.0' telegraf
 # COPY telegraf.conf /etc/telegraf/telegraf.conf
-ADD supervisor.conf /etc/supervisor.conf
+COPY supervisor.conf /etc/supervisor.conf
+
+COPY check_liveness.sh .
+RUN chmod 777 check_liveness.sh 
 
 CMD ["supervisord", "-c", "/etc/supervisor.conf"]
