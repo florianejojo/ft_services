@@ -114,8 +114,8 @@ CREATE TABLE `wp_options` (
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'siteurl', 'http://192.168.99.132:5050', 'yes'),
-(2, 'home', 'http://192.168.99.132:5050', 'yes'),
+(1, 'siteurl', 'http://172.17.0.2:5050', 'yes'),
+(2, 'home', 'http://172.17.0.2:5050', 'yes'),
 (3, 'blogname', 'ft_services', 'yes'),
 (4, 'blogdescription', 'Just another WordPress site', 'yes'),
 (5, 'users_can_register', '0', 'yes'),
@@ -486,7 +486,7 @@ CREATE TABLE `wp_users` (
 -- (3, 'user2', '$P$BBRGmr36iVTuhwPJf0rA3/52v4hyrk/', 'user2', 'user2@user2.user2', 'http://user2.user2', '2020-10-29 08:58:50', '1603961930:$P$BaluwNMqsSFjJMkkHWLuQduvlkRWCl1', 0, 'user2 user2');
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-('1', 'wp_admin', MD5('admin'), 'flolefeb', 'flolefeb@student.42.fr', 'http://192.168.99.132:5050', '2020-12-01 00:00:00', '', '0', ''),
+('1', 'wp_admin', MD5('admin'), 'flolefeb', 'flolefeb@student.42.fr', 'http://172.17.0.2:5050', '2020-12-01 00:00:00', '', '0', ''),
 ('2', 'user2', 'user2', '', '', '', '2020-12-01 00:00:00', '', '0', ''),
 ('3', 'user3', 'user3', '', '', '', '2020-12-02 00:00:00', '', '0', '');
 --
