@@ -1,5 +1,5 @@
 
-FROM alpine
+FROM alpine:3.12
 
 RUN apk update \
 && apk add mariadb mariadb-client curl supervisor && apk add --no-cache --upgrade bash \

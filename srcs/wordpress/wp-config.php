@@ -29,7 +29,7 @@ define( 'DB_USER', 'wp_admin' );
 define( 'DB_PASSWORD', 'admin' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'mysql-service' ); # 172.17.0.2:3306
+define( 'DB_HOST', 'mysql-service' ); 
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

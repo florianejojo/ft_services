@@ -7,7 +7,8 @@ minikube delete
 if ! minikube status >/dev/null 2>&1
 then
     echo "\033[1;31m->\033[0;31m Minikube is not launched. Starting now... \n"
-    minikube start --vm-driver=docker
+    minikube start --vm-driver=virtualbox
+    # minikube start --vm-driver=docker
     eval $(minikube docker-env)
 fi
 minikube addons enable metrics-server

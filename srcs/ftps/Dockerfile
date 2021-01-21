@@ -51,7 +51,7 @@
 
 
 
-FROM alpine
+FROM alpine:3.12
 
 EXPOSE 21 30020
 
