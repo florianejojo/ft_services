@@ -37,6 +37,9 @@ define( 'DB_CHARSET', 'utf8' );
 /** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
+// define('WP_HOME','https://192.168.99.132:5050'); 
+// define('WP_SITEURL','https://192.168.99.132:5050');
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -46,14 +49,14 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         'put your unique phrase here' );
-define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
-define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
-define( 'NONCE_KEY',        'put your unique phrase here' );
-define( 'AUTH_SALT',        'put your unique phrase here' );
-define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
-define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
-define( 'NONCE_SALT',       'put your unique phrase here' );
+define('AUTH_KEY',         '`TawTS{(1Tie@p{ D[].y_n-=^&g5X1e.PB9H3/}iH6:W3IX3ya0-??wX ($M+nZ');
+define('SECURE_AUTH_KEY',  '`c2q+y{(`j3:Ub!KSCc%@t8E# DsRz|>O=6S(P+1i6fmrn)I(-w^92m}x^SdZ:M0');
+define('LOGGED_IN_KEY',    '|-JC[41-[M_VcL`?sHTJ&^f:RXGD(;aH>+ |S#~#|~CHVzzn)LP$;JSk}Qa;EQ`9');
+define('NONCE_KEY',        'OICdQM$jhg;CU(j&,OE|gWjgs6g-F;+2[Zew9DV79G=*2,W|<Lvn]0#r}+TtIn^s');
+define('AUTH_SALT',        'vbkPS>How>/,p#:9I^:dtwfPX-bQ|Pp{=o?ja2xn^xmmfal*7t1mW|,}Dc2uaEEE');
+define('SECURE_AUTH_SALT', 'qQ$I]zE-@Bb?vQ! F)%(sJ%=l[Oe*UPoq|W(>mxgy6_:@MQk5#HcTm L?:,i&t6)');
+define('LOGGED_IN_SALT',   'U B%&+-T>F*I.&cP&smf}y.]Ykp.+zVzOhh~q>Rd:Us%uwWYhn(]w7-6Q;oR{|Bv');
+define('NONCE_SALT',       ',P9a,CE9|pO<>*&PKd2CX*jN8vDWDR#*mU56r8 ~jl-(LzdW#j%V/n;clzx}ufB$');
 
 /**#@-*/
 

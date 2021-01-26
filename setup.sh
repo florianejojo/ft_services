@@ -1,18 +1,28 @@
 #! /bin/bash
 
+# #INSTALL KUBECTL
+# sudo apt-get update && sudo apt-get install -y apt-transport-https
+# curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+# echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+# sudo apt-get update
+# sudo apt-get install -y kubectl
+# #INSTALL MINIKUBE
+# curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+# sudo dpkg -i minikube_latest_amd64.deb
+
 ###
 # Lancer Minikube et installer les addons
 ###
-minikube delete
-if ! minikube status >/dev/null 2>&1
-then
-    echo "\033[1;31m->\033[0;31m Minikube is not launched. Starting now... \n"
+# minikube delete
+# if ! minikube status >/dev/null 2>&1
+# then
+#     echo "\033[1;31m->\033[0;31m Minikube is not launched. Starting now... \n"
     minikube start --vm-driver=virtualbox
     # minikube start --vm-driver=docker
     eval $(minikube docker-env)
-fi
+# fi
 minikube addons enable metrics-server
-minikube addons enable metallb
+# minikube addons enable metallb
 
 ###
 # Install MetalLB 
