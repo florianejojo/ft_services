@@ -12,20 +12,10 @@ spec:
   ports:
     - name: port-21
       port: 21
-      # targetPort: 21
       protocol: TCP
-    # - name: port-20
-    #   port: 20
-    #   targetPort: 20
-    #   protocol: TCP
     - name: port-30020
       port: 30020
-      # targetPort: 30020
       protocol: TCP
-    # - name: ftps-30001
-    #   port: 30001
-    #   targetPort: 30001
-    #   protocol: TCP
   type: LoadBalancer
 
 ---
