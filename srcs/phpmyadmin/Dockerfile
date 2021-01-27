@@ -12,7 +12,6 @@ RUN  rm /etc/nginx/conf.d/default.conf
 
 COPY srcs/nginx.conf /etc/nginx/nginx.conf
 COPY srcs/www.conf /etc/php7/php-fpm.d/www.conf
-COPY srcs/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY srcs/supervisord.conf .
 
@@ -40,11 +39,7 @@ RUN curl 'https://dl.influxdata.com/telegraf/releases/telegraf-1.16.0_linux_i386
     mv 'telegraf-1.16.0' telegraf
 COPY telegraf.conf /etc/telegraf/telegraf.conf
 
-# COPY launch.sh .
-
 EXPOSE 5000
-
-# CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 CMD ["supervisord", "-c", "supervisord.conf"]
 
