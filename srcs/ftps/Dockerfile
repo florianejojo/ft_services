@@ -13,8 +13,8 @@ RUN echo -e "admin\nadmin" | passwd admin
 
 COPY supervisord.conf /etc/supervisord.conf
 
-# COPY check_liveness.sh .
-# RUN chmod 777 check_liveness.sh
+COPY check_liveness.sh .
+RUN chmod 777 check_liveness.sh
 
 RUN curl 'https://dl.influxdata.com/telegraf/releases/telegraf-1.16.0_linux_i386.tar.gz' > telegraf.tar.gz && \
     tar xvf telegraf.tar.gz && \

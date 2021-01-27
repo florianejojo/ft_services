@@ -39,16 +39,14 @@ spec:
         - name: ftps-service
           image: my-image-ftps
           imagePullPolicy: Never
-          # livenessProbe:
-          #   exec:
-          #     command:
-          #     - sh
-          #     - check_liveness.sh
-          #   initialDelaySeconds: 5
-          #   periodSeconds: 5
+          livenessProbe:
+            exec:
+              command:
+              - sh
+              - check_liveness.sh
+            initialDelaySeconds: 5
+            periodSeconds: 5
           ports:
           - containerPort: 21
-          # - containerPort: 20
           - containerPort: 30020
-          # - containerPort: 30001
   

@@ -45,18 +45,13 @@ spec:
       labels:
         app: grafana
     spec:
+      restartPolicy: Always
       containers:
-      - envFrom:
-        # - secretRef:
-        #     name: grafana-secret
+      - name: grafana-service
         image: my-image-grafana
         imagePullPolicy: IfNotPresent
-        name: grafana-service
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
+        livenessProbe:
+          tcpSocket:
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
