@@ -1,14 +1,36 @@
 #! /bin/bash
 
+
+###
+# Choisir Mac ou Vm
+###
+
+set_ip="Mac"
+if [ set_ip = "Vm" ]
+then
+	sudo usermod -aG docker user42; newgrp docker
+	sed -i.bak "s/"192.168.99.132"/"172.17.0.2"/g" $(grep -lr "192.168.99.132" srcs/*)
+	
+else
+	
+	sed -i.bak "s/172.17.0.2/192.168.99.132/g" $(grep -lr "172.17.0.2" srcs/*)
+
+fi
+
+
+
+
 ###
 # Lancer Minikube et installer les addons
 ###
+
 # minikube delete
+
 
 # minikube start --vm-driver=virtualbox
 minikube start --vm-driver=docker
 eval $(minikube docker-env)
-minikube addons enable metrics-server
+# minikube addons enable metrics-server
 
 ###
 # Install MetalLB 
@@ -44,4 +66,4 @@ done
 # Dashboard
 ###
 
-minikube dashboard
+minikube dashboard &
