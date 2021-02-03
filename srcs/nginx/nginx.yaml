@@ -44,8 +44,8 @@ spec:
         ports:
         - containerPort: 80
         - containerPort: 443
-        livenessProbe:
-          tcpSocket:
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        # livenessProbe:
+        #   tcpSocket:
+        #     port: 80
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 10
